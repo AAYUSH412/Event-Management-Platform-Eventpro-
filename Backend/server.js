@@ -22,6 +22,8 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:4000',
+    'https://eventpro-frontend.vercel.app',
+    'https://eventpro-backend.vercel.app'
   ],
   credentials: true
 }));
