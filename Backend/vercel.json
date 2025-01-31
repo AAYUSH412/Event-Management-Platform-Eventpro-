@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.js"
+      }
+    ],
+    "env": {
+      "MONGO_URI": "@mongo_uri",
+      "PORT": "@port",
+      "IMAGEKIT_PUBLIC_KEY": "@imagekit_public_key",
+      "IMAGEKIT_PRIVATE_KEY": "@imagekit_private_key",
+      "IMAGEKIT_URL_ENDPOINT": "@imagekit_url_endpoint",
+      "RAZORPAY_KEY_ID": "@razorpay_key_id",
+      "RAZORPAY_KEY_SECRET": "@razorpay_key_secret",
+      "NODE_ENV": "production"
+    }
+  }
