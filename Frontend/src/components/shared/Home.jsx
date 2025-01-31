@@ -1,6 +1,28 @@
 import { Calendar, Users, MapPin, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Homeimage from "../../assets/homepage.png"
+import Homeimage from "../../assets/homepage.png";
+
+// In Home.jsx
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Marketing Director",
+    avatar: 1,
+    text: "EventPro transformed our corporate event into an unforgettable experience. The attention to detail and professional service exceeded our expectations.",
+  },
+  {
+    name: "Michael Chen",
+    role: "Event Organizer",
+    avatar: 7,
+    text: "The platform's user-friendly interface and real-time updates made managing multiple events simultaneously a breeze. My clients were thoroughly impressed with the seamless booking experience.",
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Wedding Planner",
+    avatar: 9,
+    text: "As a wedding planner, I need reliable tools. EventPro's comprehensive features and excellent customer support have made it my go-to platform for all wedding arrangements.",
+  },
+];
 
 const HomePage = () => {
   return (
@@ -47,7 +69,7 @@ const HomePage = () => {
                     to={"/event"}
                     className="group bg-white text-indigo-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-100 transition-all duration-300 flex items-center gap-2 hover:gap-4"
                   >
-                    Get Started
+                    Explore Events
                     <ArrowRight className="h-5 w-5 transition-all duration-300" />
                   </Link>
                 </div>
@@ -151,8 +173,9 @@ const HomePage = () => {
             {`Don't just take our word for it - hear from some of our satisfied clients`}
           </p>
         </div>
+
         <div className="grid md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
+          {testimonials.map((testimonial, i) => (
             <div key={i} className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -162,21 +185,17 @@ const HomePage = () => {
                   />
                 ))}
               </div>
-              <p className="text-gray-600 mb-6">
-                {`"EventPro transformed our corporate event into an unforgettable
-                experience. The attention to detail and professional service
-                exceeded our expectations."`}
-              </p>
+              <p className="text-gray-600 mb-6">{`"${testimonial.text}"`}</p>
               <div className="flex items-center gap-4">
                 <img
-                  src={`https://i.pravatar.cc/150?img=${i}`}
-                  alt="Client"
+                  src={`https://i.pravatar.cc/150?img=${testimonial.avatar}`}
+                  alt={testimonial.name}
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <div className="font-semibold">Sarah Johnson</div>
+                  <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-gray-600 text-sm">
-                    Marketing Director
+                    {testimonial.role}
                   </div>
                 </div>
               </div>

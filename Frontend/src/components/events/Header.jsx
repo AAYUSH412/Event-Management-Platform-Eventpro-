@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Search, Filter, Calendar, MapPin } from "lucide-react";
+import { Search, Calendar, MapPin, IndianRupee } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEventContext } from "../../context/EventContext";
 
 const Header = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const {
     searchQuery,
     setSearchQuery,
@@ -14,7 +13,10 @@ const Header = () => {
     setSelectedDate,
     selectedCategory,
     setSelectedCategory,
+    priceRange,
+    setPriceRange,
   } = useEventContext();
+
   const categories = [
     "All",
     "Music",
@@ -44,10 +46,12 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    // Implement search functionality
   };
 
   return (
     <div className="relative bg-gradient-to-br from-indigo-900 to-purple-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 -top-48 -left-48 bg-indigo-500/30 rounded-full filter blur-3xl"></div>
         <div className="absolute w-96 h-96 -bottom-48 -right-48 bg-purple-500/30 rounded-full filter blur-3xl"></div>
@@ -69,62 +73,92 @@ const Header = () => {
           </p>
         </motion.div>
 
-        {/* Search and Filter Section */}
-        <motion.div variants={itemVariants} className="max-w-3xl mx-auto">
+        {/* Enhanced Search and Filter Section */}
+        <motion.div variants={itemVariants} className="max-w-4xl mx-auto">
           <form
             onSubmit={handleSearch}
-            className="bg-white rounded-2xl shadow-xl p-4"
+            className="bg-white rounded-2xl shadow-xl p-6"
           >
-            <div className="grid md:grid-cols-3 gap-4">
-              {/* Search Input */}
+            {/* Main Search Bar */}
+            <div className="relative mb-6">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for events..."
+                className="w-full pl-10 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg"
+              />
+            </div>
+
+            {/* Filters Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              {/* Location Filter */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search events..."
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <input
+                    type="text"
+                    value={selectedLocation}
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    placeholder="Any location"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  />
+                </div>
               </div>
 
-              {/* Location Input */}
+              {/* Date Filter */}
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="text"
-                  value={selectedLocation}
-                  onChange={(e) => setSelectedLocation(e.target.value)}
-                  placeholder="Location"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                <div className="relative">
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <input
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  />
+                </div>
               </div>
 
-              {/* Date Input */}
+              {/* Price Range */}
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Min Price</label>
+                <div className="relative">
+                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <input
+                    type="number"
+                    value={priceRange.min}
+                    onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+                    placeholder="Min"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div className="relative">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Max Price</label>
+                <div className="relative">
+                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <input
+                    type="number"
+                    value={priceRange.max}
+                    onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
+                    placeholder="Max"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Advanced Filters Button */}
-            <div className="mt-4 flex items-center justify-between">
-              <button
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center text-indigo-600 hover:text-indigo-700 transition-colors duration-200"
-              >
-                <Filter className="h-4 w-4 mr-2" />
-                Advanced Filters
-              </button>
-              <button className="bg-indigo-600 text-white px-6 py-2 rounded-xl hover:bg-indigo-700 transition-colors duration-200">
-                Search Events
-              </button>
-            </div>
+            {/* Search Button */}
+            <button 
+              type="submit"
+              className="w-full bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 transition-colors duration-200 font-semibold"
+            >
+              Search Events
+            </button>
           </form>
         </motion.div>
 
