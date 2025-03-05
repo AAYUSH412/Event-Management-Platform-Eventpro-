@@ -6,7 +6,6 @@
 
 A modern full-stack event management platform built with React, Node.js, and MongoDB. Seamlessly create, manage, and book events with features like secure payments, real-time updates, and a responsive design.
 
-
 ## ✨ Features
 
 ### 🎭 Event Management
@@ -67,7 +66,7 @@ A modern full-stack event management platform built with React, Node.js, and Mon
 ### Backend Setup
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/event-platform.git
+git clone https://github.com/AAYUSH412/Event-Management-Platform-Eventpro-.git
 cd event-platform/backend
 ```
 
@@ -117,7 +116,7 @@ Configure the following in `.env`:
 ```env
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_API_URL=http://localhost:8000
+VITE_API_URL=http://localhost:3000
 VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
 ```
 
@@ -129,7 +128,9 @@ npm run dev
 ## 🌟 Usage
 
 1. Visit `http://localhost:5173` in your browser
-2. Create an account or log in
+2. Log in using the test credentials:
+   - Email: testeventpro@gmail.com
+   - Password: testeventpro
 3. Start creating events or browsing available events
 4. Test the payment flow using Razorpay test credentials
 
@@ -167,13 +168,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Contributors
 
-- [Aayush Vaghela](https://github.com/yourusername) - Project Lead
+- [Aayush Vaghela](https://github.com/AAYUSH412) - Project Lead
 
 ## 📧 Contact
 
 Aayush Vaghela - [aayushvaghela12@gmail.com](mailto:aayushvaghela12@gmail.com)
 
-Project Link: [https://github.com/yourusername/event-platform](https://github.com/yourusername/event-platform)
+Project Link: [https://github.com/yourusername/event-platform](https://eventpro-frontend.vercel.app)
 
 ## 🙏 Acknowledgments
 
