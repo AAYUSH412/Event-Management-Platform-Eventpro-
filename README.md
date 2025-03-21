@@ -389,8 +389,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/aayushvaghela">
-        <img src="https://github.com/aayushvaghela.png" width="100px;" alt="Aayush Vaghela"/>
+      <a href="https://github.com/AAYUSH412">
+        <img src="https://github.com/AAYUSH412.png" width="100px;" alt="Aayush Vaghela"/>
         <br />
         <sub><b>Aayush Vaghela</b></sub>
       </a>
@@ -425,7 +425,6 @@ Join our community:
 - AI-powered event recommendations
 - Augmented reality venue previews
 
-Check our [project board](https://github.com/AAYUSH412/event-platform/projects) for detailed roadmap.
 
 ## 🙏 Acknowledgments
 
